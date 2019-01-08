@@ -24,8 +24,12 @@ public class Main {
      */
 
     static class Number {
-        public void getOne() {
-            int a = 1 / 0;
+        public synchronized void getOne() {
+            try {
+                Thread.sleep(100000000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("one");
         }
 
@@ -42,8 +46,8 @@ public class Main {
         Number number = new Number();
         Number number2 = new Number();
 
-        new Thread(() -> number.getOne()).start();
-        new Thread(() -> number.getTwo()).start();
+        new Thread(() -> number.getOne(),"Angel Han").start();
+        new Thread(() -> number.getTwo(),"Angel Juan").start();
 //        new Thread(() -> number.getThree()).start();
     }
 }
