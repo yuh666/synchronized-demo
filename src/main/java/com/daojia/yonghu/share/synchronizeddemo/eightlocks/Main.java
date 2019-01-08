@@ -18,10 +18,14 @@ public class Main {
      * 7. 一个静态同步方法  一个非静态同步方法   两个 Number 对象  打印?
      * 8. 两个静态同步方法  两个 Number 对象  打印?
      *
+     * 特殊情况
+     * 1. 两个普通同步方法  两个线程 getOne抛出异常   一个number对象  打印?
+     *
      */
 
     static class Number {
         public void getOne() {
+            int a = 1 / 0;
             System.out.println("one");
         }
 
@@ -39,7 +43,7 @@ public class Main {
         Number number2 = new Number();
 
         new Thread(() -> number.getOne()).start();
-        new Thread(() -> number2.getTwo()).start();
+        new Thread(() -> number.getTwo()).start();
 //        new Thread(() -> number.getThree()).start();
     }
 }
