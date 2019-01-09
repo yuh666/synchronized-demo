@@ -7,6 +7,7 @@ package com.daojia.yonghu.share.synchronizeddemo.monitor;
 public class Main {
 
     private static int i;
+    private static volatile Object obj;
 
     static synchronized void lock() {
         try {
@@ -22,6 +23,10 @@ public class Main {
                 i++;
             }
         }
+    }
+
+    static void monitor1() {
+        obj = new Object();
     }
 
 
