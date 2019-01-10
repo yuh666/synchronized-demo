@@ -26,7 +26,7 @@ public class Main {
     }
 
     static void monitor1() {
-        obj = new Object();
+        i++;
     }
 
 
